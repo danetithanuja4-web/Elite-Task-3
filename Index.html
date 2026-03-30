@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0a2a54" />
+  <title>Elite Shop PWA</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- Fallback offline support -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('SW registered', reg))
+        .catch(err => console.warn('SW failed', err));
+    }
+  </script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="container">
+      <h1>Elite Shop</h1>
+      <button id="installBtn" class="btn">Install</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Shop Awesome Products Offline</h2>
+      <p>Fast, responsive, and installable PWA experience</p>
+      <button class="btn" id="notifyBtn">Enable Push</button>
+    </section>
+
+    <section class="product-grid" id="productGrid">
+      <!-- JS populates products -->
+    </section>
+
+    <section class="offline-notice" id="offlineNotice">You are offline. Showing cached products.</section>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; 2026 Elite Shop Inc.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
